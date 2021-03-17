@@ -1,8 +1,13 @@
 const { response, request } = require('express');
 const express = require('express');
 const app = express();
-const port = 3000;
 
+// use body-parsing middleware to populate req.body
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+
+const port = 3000;
 const userRouter = require('./router/users');
 
 // routing: `app.METHOD(PATH, HANDLER)`| METHOD: get, post, put, delete
